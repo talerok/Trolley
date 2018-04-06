@@ -23,9 +23,10 @@ namespace Norm_kurs
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var Factory = new ContextFactory("MSSQL-2K8","TrolleyBD",Login.Text, Password.Text);
+            var Factory = new ContextFactory("MSSQL-2k8","pavlovET-414",Login.Text, Password.Text);
             try
             {
+                button1.Enabled = false;
                 var context = Factory.Get();
 
                 //check 
@@ -46,6 +47,7 @@ namespace Norm_kurs
             finally
             {
                 Password.Text = "";
+                button1.Enabled = true;
             }
         }
     }
