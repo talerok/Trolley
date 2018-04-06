@@ -34,7 +34,7 @@ namespace Norm_kurs
                 context.Database.Connection.Close();
                 //-----
 
-                var form = new Form1(context);
+                var form = new Form1(Factory);
 
                 form.Show();
                 form.FormClosed += (a, b) => { this.Close(); };

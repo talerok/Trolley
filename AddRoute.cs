@@ -25,13 +25,14 @@ namespace Norm_kurs
             InitializeComponent();
             Context = context;
 
-            var Parks = Context.Parks.ToList();
+            var Parks1 = Context.Parks.ToList();
+            var Parks2 = Context.Parks.ToList();
 
             Park1.DisplayMember = "Adr";
             Park2.DisplayMember = "Adr";
 
-            Park1.DataSource = Parks;
-            Park2.DataSource = Parks;
+            Park1.DataSource = Parks1;
+            Park2.DataSource = Parks2;
         }
 
         public AddRoute(Context context, int id) : this(context)

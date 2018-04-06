@@ -16,7 +16,7 @@ namespace Norm_kurs
 {
     public partial class Form1 : Form
     {
-        private Context Context;
+        private ContextFactory ContextFactory;
         private BindingSource BindingSource = new BindingSource();
 
         private string[] Entities =
@@ -48,9 +48,11 @@ namespace Norm_kurs
             Control(true);
         }
 
+        private Context GlobalContext;
+
         private void CheckSelect(string select)
         {
-
+            var Context = ContextFactory.Get();
             if (select == Entities[0]) SetGrid(Context.Drivers);
             else if (select == Entities[1]) SetGrid(Context.Categories);
             else if (select == Entities[2])
@@ -116,14 +118,15 @@ namespace Norm_kurs
                 dataGridView1.DataSource = res;
                 Control(false);
             }
-
+            else return;
+            GlobalContext = Context;
         }
 
 
 
-        public Form1(Context context)
+        public Form1(ContextFactory contextFactory)
         {
-            Context = context;
+            ContextFactory = contextFactory;
             InitializeComponent();
         }
 
@@ -135,8 +138,7 @@ namespace Norm_kurs
         private void SaveButton_Click(object sender, EventArgs e)
         {
             dataGridView1.EndEdit();
-            Context.SaveChanges();
-            var ee = Context.Drivers.ToList();
+            GlobalContext.SaveChanges();
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
@@ -157,25 +159,25 @@ namespace Norm_kurs
       
         private void AddSchedule_Click(object sender, EventArgs e)
         {
-            var form = new AddNewSchedule(Context);
+            var form = new AddNewSchedule(ContextFactory.Get());
             form.Show();
         }
 
         private void AddTrolley_Click(object sender, EventArgs e)
         {
-            var form = new AddNewTrolley(Context);
+            var form = new AddNewTrolley(ContextFactory.Get());
             form.Show();
         }
 
         private void AddRoute_Click(object sender, EventArgs e)
         {
-            var form = new AddRoute(Context);
+            var form = new AddRoute(ContextFactory.Get());
             form.Show();
         }
 
         private void CategoryButton_Click(object sender, EventArgs e)
         {
-            var form = new ChangeCategory(Context);
+            var form = new ChangeCategory(ContextFactory.Get());
             form.Show();
         }
 
@@ -186,7 +188,7 @@ namespace Norm_kurs
 
         private void PaymentInfo_Click(object sender, EventArgs e)
         {
-            var form = new PaymentInfo(Context);
+            var form = new PaymentInfo(ContextFactory.Get());
             form.Show();
         }
 
@@ -199,17 +201,19 @@ namespace Norm_kurs
                 if (Elm != null) Elems.Add(Elm);
             }
             Entity.RemoveRange(Elems);
-            Context.SaveChanges();
+            
         }
 
         private void Delete(IEnumerable<int> ids)
         {
             string select = comboBox1.Text;
-            if (select == Entities[2])  Delete(Context.CategoriesNDrivers, ids);
+            var Context = ContextFactory.Get();
+            if (select == Entities[2]) Delete(Context.CategoriesNDrivers, ids);
             else if (select == Entities[5]) Delete(Context.Schedules, ids);
             else if (select == Entities[6]) Delete(Context.Trollies, ids);
             else if (select == Entities[7]) Delete(Context.Routes, ids);
-            
+            else return;
+            Context.SaveChanges();
         }
 
         private void AddOrUpdate(int id = -1)
@@ -218,23 +222,23 @@ namespace Norm_kurs
             Form form = null;
             if (select == Entities[2])
             {
-                if (id == -1) form = new ChangeCategory(Context);
-                else form = new ChangeCategory(Context, id);
+                if (id == -1) form = new ChangeCategory(ContextFactory.Get());
+                else form = new ChangeCategory(ContextFactory.Get(), id);
             }
             else if (select == Entities[5])
             {
-                if (id == -1) form = new AddNewSchedule(Context);
-                else form = new AddNewSchedule(Context, id);
+                if (id == -1) form = new AddNewSchedule(ContextFactory.Get());
+                else form = new AddNewSchedule(ContextFactory.Get(), id);
             }
             else if (select == Entities[6])
             {
-                if (id == -1) form = new AddNewTrolley(Context);
-                else form = new AddNewTrolley(Context, id);
+                if (id == -1) form = new AddNewTrolley(ContextFactory.Get());
+                else form = new AddNewTrolley(ContextFactory.Get(), id);
             }
             else if (select == Entities[7])
             {
-                if (id == -1) form = new AddRoute(Context);
-                else form = new AddRoute(Context, id);
+                if (id == -1) form = new AddRoute(ContextFactory.Get());
+                else form = new AddRoute(ContextFactory.Get(), id);
             }
 
             if (form != null) form.Show();
