@@ -37,8 +37,8 @@ namespace Norm_kurs
             var Res = Context.Schedules.Where(
                 x =>
                 x.Driver.Name == DriverBox.Text &&
-                x.Start >= StartTimePicker.Value &&
-                x.End <= EndTimePicker.Value);
+                x.Start >= StartTimePicker.Value.Date &&
+                x.End <= EndTimePicker.Value.Date);
             foreach (var a in Res)
             {
                 var Category = Categories.LastOrDefault(x => a.Start >= x.Start);

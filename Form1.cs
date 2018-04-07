@@ -264,6 +264,12 @@ namespace Norm_kurs
 
         }
 
+        private void PaymentButton_Click(object sender, EventArgs e)
+        {
+            var form = new PaymentInfo(ContextFactory.Get());
+            form.Show();
+        }
+
         private void CreateButton_Click(object sender, EventArgs e)
         {
             AddOrUpdate();

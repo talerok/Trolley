@@ -35,6 +35,7 @@
             this.DeleteButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
+            this.PaymentButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -104,6 +105,16 @@
             this.EditButton.UseVisualStyleBackColor = true;
             this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
+            // PaymentButton
+            // 
+            this.PaymentButton.Location = new System.Drawing.Point(450, 470);
+            this.PaymentButton.Name = "PaymentButton";
+            this.PaymentButton.Size = new System.Drawing.Size(130, 23);
+            this.PaymentButton.TabIndex = 13;
+            this.PaymentButton.Text = "Расчитать зарплату";
+            this.PaymentButton.UseVisualStyleBackColor = true;
+            this.PaymentButton.Click += new System.EventHandler(this.PaymentButton_Click);
+            // 
             // CreateButton
             // 
             this.CreateButton.Enabled = false;
@@ -114,6 +125,7 @@
             this.CreateButton.Text = "Создать";
             this.CreateButton.UseVisualStyleBackColor = true;
             this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
+            
             // 
             // Form1
             // 
@@ -126,7 +138,9 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.SaveButton);
+            this.Controls.Add(this.PaymentButton);
             this.Controls.Add(this.dataGridView1);
+            
             this.Name = "Form1";
             this.Text = "Депо";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -144,6 +158,7 @@
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button EditButton;
         private System.Windows.Forms.Button CreateButton;
+        private System.Windows.Forms.Button PaymentButton;
     }
 }
 
