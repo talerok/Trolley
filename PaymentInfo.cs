@@ -1,6 +1,5 @@
 ﻿using System;
 using Norm_kurs.DA;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;

@@ -11,7 +11,6 @@ namespace Norm_kurs.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Park Start { get; set; }
-        public Park End { get; set; }
+
     }
 }

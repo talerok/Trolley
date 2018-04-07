@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Norm_kurs.Models
 {
-    public class Trolley : IEntity
+    public class Stop : IEntity
     {
         public int Id { get; set; }
-        public string Number { get; set; }
+        public string Name { get; set; }
+
     }
 }

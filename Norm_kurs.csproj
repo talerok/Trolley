@@ -55,25 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddNewTrolley.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddNewTrolley.Designer.cs">
-      <DependentUpon>AddNewTrolley.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AddPayment.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddPayment.Designer.cs">
-      <DependentUpon>AddPayment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AddRoute.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddRoute.Designer.cs">
-      <DependentUpon>AddRoute.cs</DependentUpon>
-    </Compile>
     <Compile Include="BL\ContextFactory.cs" />
+    <Compile Include="BL\NameHelper.cs" />
     <Compile Include="DA\Context.cs" />
     <Compile Include="EnterInApp.cs">
       <SubType>Form</SubType>
@@ -81,9 +64,7 @@
     <Compile Include="EnterInApp.Designer.cs">
       <DependentUpon>EnterInApp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Form1.cs" />
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
@@ -108,10 +89,11 @@
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\CategoryNDriver.cs" />
     <Compile Include="Models\Interfaces\IEntity.cs" />
-    <Compile Include="Models\Park.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Route.cs" />
+    <Compile Include="Models\RouteStop.cs" />
     <Compile Include="Models\Schedule.cs" />
+    <Compile Include="Models\Stop.cs" />
     <Compile Include="Models\Trolley.cs" />
     <Compile Include="Models\Driver.cs" />
     <Compile Include="PaymentInfo.cs">
@@ -122,15 +104,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddNewTrolley.resx">
-      <DependentUpon>AddNewTrolley.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AddPayment.resx">
-      <DependentUpon>AddPayment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AddRoute.resx">
-      <DependentUpon>AddRoute.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="AddRouteStop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddRouteStop.Designer.cs">
+      <DependentUpon>AddRouteStop.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ChangeCategory.resx">
       <DependentUpon>ChangeCategory.cs</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +137,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddRouteStop.resx">
+      <DependentUpon>AddRouteStop.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -173,7 +155,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BL\Services\" />
     <Folder Include="Forms\CategoryNDriver\" />
     <Folder Include="Forms\Category\" />
     <Folder Include="Forms\Driver\" />

@@ -45,11 +45,8 @@ C:\Users\talerok\Desktop\Norm_kurs\Trolley\bin\Debug\EntityFramework.SqlServer.d
 C:\Users\talerok\Desktop\Norm_kurs\Trolley\bin\Debug\EntityFramework.xml
 C:\Users\talerok\Desktop\Norm_kurs\Trolley\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\talerok\Desktop\Norm_kurs\Trolley\obj\Debug\Norm_kurs.csprojResolveAssemblyReference.cache
-C:\Users\talerok\Desktop\Norm_kurs\Trolley\obj\Debug\Norm_kurs.AddNewTrolley.resources
-C:\Users\talerok\Desktop\Norm_kurs\Trolley\obj\Debug\Norm_kurs.AddRoute.resources
 C:\Users\talerok\Desktop\Norm_kurs\Trolley\obj\Debug\Norm_kurs.ChangeCategory.resources
 C:\Users\talerok\Desktop\Norm_kurs\Trolley\obj\Debug\Norm_kurs.EnterInApp.resources
-C:\Users\talerok\Desktop\Norm_kurs\Trolley\obj\Debug\Norm_kurs.Form1.resources
 C:\Users\talerok\Desktop\Norm_kurs\Trolley\obj\Debug\Norm_kurs.AddNewSchedule.resources
 C:\Users\talerok\Desktop\Norm_kurs\Trolley\obj\Debug\Norm_kurs.LoginForm.resources
 C:\Users\talerok\Desktop\Norm_kurs\Trolley\obj\Debug\Norm_kurs.PaymentInfo.resources
@@ -58,4 +55,5 @@ C:\Users\talerok\Desktop\Norm_kurs\Trolley\obj\Debug\Norm_kurs.csproj.GenerateRe
 C:\Users\talerok\Desktop\Norm_kurs\Trolley\obj\Debug\Norm_kurs.csproj.CoreCompileInputs.cache
 C:\Users\talerok\Desktop\Norm_kurs\Trolley\obj\Debug\Norm_kurs.exe
 C:\Users\talerok\Desktop\Norm_kurs\Trolley\obj\Debug\Norm_kurs.pdb
-C:\Users\talerok\Desktop\Norm_kurs\Trolley\obj\Debug\Norm_kurs.AddPayment.resources
+C:\Users\talerok\Desktop\Norm_kurs\Trolley\obj\Debug\Norm_kurs.AddRouteStop.resources
+C:\Users\talerok\Desktop\Norm_kurs\Trolley\obj\Debug\Norm_kurs.RouteStopView.resources

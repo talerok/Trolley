@@ -61,6 +61,7 @@
             this.TrolleyBox.Name = "TrolleyBox";
             this.TrolleyBox.Size = new System.Drawing.Size(121, 21);
             this.TrolleyBox.TabIndex = 2;
+            this.TrolleyBox.SelectedIndexChanged += new System.EventHandler(this.TrolleyBox_SelectedIndexChanged);
             // 
             // RouteBox
             // 
@@ -70,6 +71,7 @@
             this.RouteBox.Name = "RouteBox";
             this.RouteBox.Size = new System.Drawing.Size(121, 21);
             this.RouteBox.TabIndex = 3;
+            this.RouteBox.SelectedIndexChanged += new System.EventHandler(this.RouteBox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -83,7 +85,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 51);
+            this.label2.Location = new System.Drawing.Point(12, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(70, 13);
             this.label2.TabIndex = 5;

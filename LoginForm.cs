@@ -23,7 +23,8 @@ namespace Norm_kurs
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var Factory = new ContextFactory("MSSQL-2k8","pavlovET-414",Login.Text, Password.Text);
+            //var Factory = new ContextFactory("MSSQL-2k8","pavlovET-414",Login.Text, Password.Text);
+            var Factory = new ContextFactory("test3");
             try
             {
                 button1.Enabled = false;

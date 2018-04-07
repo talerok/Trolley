@@ -18,9 +18,6 @@ namespace Norm_kurs
     {
         private Context Context;
 
-        private List<int> DriverID = new List<int>();
-        private List<int> RouteID = new List<int>();
-        private List<int> TrolleyID = new List<int>();
 
         private bool Edit = false;
         private Schedule SelectItem = null;
@@ -31,13 +28,9 @@ namespace Norm_kurs
 
             DriverBox.DisplayMember = "Name";
             RouteBox.DisplayMember = "Name";
-            TrolleyBox.DisplayMember = "Number";
-
             DriverBox.DataSource = Context.Drivers.ToList();
             RouteBox.DataSource = Context.Routes.ToList();
             TrolleyBox.DataSource = Context.Trollies.ToList();
-
-            
         }
 
         public AddNewSchedule(Context context, int id) : this(context)
@@ -61,8 +54,20 @@ namespace Norm_kurs
             var Route = RouteBox.SelectedItem as Route;
             var Trolley = TrolleyBox.SelectedItem as Trolley;
 
-            var Start = dateTimePicker.Value + TimeSpan.Parse(TimeStart.Text);
-            var End = dateTimePicker.Value + TimeSpan.Parse(TimeEnd.Text);
+            var timeStart = TimeSpan.Parse(TimeStart.Text);
+            var timeEnd = TimeSpan.Parse(TimeEnd.Text);
+
+            var Start = dateTimePicker.Value.Date;
+            var End = dateTimePicker.Value.Date;
+
+            
+
+            Start.AddMinutes(timeStart.TotalMinutes);
+            End.AddMinutes(timeEnd.TotalMinutes);
+
+            if (Start >= End)
+                throw new Exception("Начало смены раньше, чем конец");
+
             if (Driver != null && Route != null && Trolley != null)
             {
                 schedule.Driver = Driver;
@@ -71,6 +76,23 @@ namespace Norm_kurs
                 schedule.Start = Start;
                 schedule.End = End;
             }         
+        }
+
+        private bool Intersection(DateTime start1, DateTime end1, DateTime start2, DateTime end2)
+        {
+            if (start1 < end2 || end1 < start2) return false;
+            else return true;
+        }
+
+        private void Test(Schedule schedule)
+        {
+            var test = Context.Schedules
+                   .FirstOrDefault(x =>
+                   (schedule.Start <= x.End && schedule.End >= x.Start)
+                   && x.Driver.Id == schedule.Driver.Id || x.Trolley.Id == schedule.Trolley.Id);
+
+            if (test != null)
+                throw (new Exception(String.Format("Смена пересекается с другой сменой\n Id: {0}, Водитель: {1}, Тролейбус: {2}, Начало смены: {3}, Конец смены {4}", test.Id, test.Driver.Name, test.Trolley.Number, test.Start, test.End)));
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -84,6 +106,9 @@ namespace Norm_kurs
                     schedule = new Schedule();
 
                 Set(schedule);
+
+                Test(schedule);
+
                 if (!Edit) Context.Schedules.Add(schedule);
                 Context.SaveChanges();
 
@@ -100,6 +125,16 @@ namespace Norm_kurs
         private void AbortButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void TrolleyBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RouteBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
