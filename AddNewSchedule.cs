@@ -28,6 +28,7 @@ namespace Norm_kurs
 
             DriverBox.DisplayMember = "Name";
             RouteBox.DisplayMember = "Name";
+            TrolleyBox.DisplayMember = "Number";
             DriverBox.DataSource = Context.Drivers.ToList();
             RouteBox.DataSource = Context.Routes.ToList();
             TrolleyBox.DataSource = Context.Trollies.ToList();
@@ -62,8 +63,8 @@ namespace Norm_kurs
 
             
 
-            Start.AddMinutes(timeStart.TotalMinutes);
-            End.AddMinutes(timeEnd.TotalMinutes);
+            Start = Start.AddMinutes(timeStart.TotalMinutes);
+            End = End.AddMinutes(timeEnd.TotalMinutes);
 
             if (Start >= End)
                 throw new Exception("Начало смены раньше, чем конец");
