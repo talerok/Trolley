@@ -90,8 +90,7 @@ namespace Norm_kurs
             var test = Context.Schedules
                    .FirstOrDefault(x =>
                    (schedule.Start <= x.End && schedule.End >= x.Start)
-                   && x.Driver.Id == schedule.Driver.Id || x.Trolley.Id == schedule.Trolley.Id);
-
+                   && (x.Driver.Id == schedule.Driver.Id || x.Trolley.Id == schedule.Trolley.Id));
             if (test != null)
                 throw (new Exception(String.Format("Смена пересекается с другой сменой\n Id: {0}, Водитель: {1}, Тролейбус: {2}, Начало смены: {3}, Конец смены {4}", test.Id, test.Driver.Name, test.Trolley.Number, test.Start, test.End)));
         }
