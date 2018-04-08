@@ -67,7 +67,7 @@ namespace Norm_kurs
             End = End.AddMinutes(timeEnd.TotalMinutes);
 
             if (Start >= End)
-                throw new Exception("Начало смены раньше, чем конец");
+                throw new Exception("Конец смены раньше, чем начало");
 
             if (Driver != null && Route != null && Trolley != null)
             {
